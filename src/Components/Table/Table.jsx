@@ -6,24 +6,13 @@ import { contactsThunks, contactsSelector } from "../../redux";
 
 const Table = () => {
   const [page, setPage] = useState(1);
-
-  const container = useRef();
   const dispatch = useDispatch();
+  const container = useRef();
+
   const data = useSelector(contactsSelector.selectAllContacts);
   const total = useSelector(contactsSelector.selectTotal);
   const isLoading = useSelector(contactsSelector.selectIsLoading);
   const error = useSelector(contactsSelector.selectError);
-
-  //   const [data, isLoading] = usePost({
-  //     data: {
-  //       firstName: "Nick",
-  //       lastName: "Pick",
-  //       city: "Kiev",
-  //       number: 933822212,
-  //       email: "nick@wick.com",
-  //     },
-  //     start: true,
-  //   });
 
   useEffect(() => {
     dispatch(contactsThunks.getContactsThunk(page));

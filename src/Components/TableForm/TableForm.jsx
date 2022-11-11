@@ -31,7 +31,7 @@ const schema = yup
   })
   .required();
 
-export default function TableForm({ formRef }) {
+export default function TableForm() {
   const dispatch = useDispatch();
   const {
     register,
@@ -49,10 +49,12 @@ export default function TableForm({ formRef }) {
 
   return (
     <form
-      ref={formRef}
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col w-[400px] mx-auto mt-4"
     >
+      <label className="block  bg-green-500 py-1 font-semibold text-white text-center rounded-t-md active:shadow-l">
+        Contact details
+      </label>
       <label htmlFor="firstName" className="py-1">
         First Name
       </label>
@@ -103,7 +105,10 @@ export default function TableForm({ formRef }) {
         className="px-2 py-1 rounded-sm"
       />
       <p className="text-red-500">{errors.email?.message}</p>
-      <input type="submit" />
+      <input
+        type="submit"
+        className="block mt-[16px] cursor-pointer bg-green-500 py-1 font-semibold text-white hover:text-gray-500 rounded-b-md active:shadow-lg active:text-gray-700"
+      />
     </form>
   );
 }
